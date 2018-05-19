@@ -1,0 +1,16 @@
+{
+  "name": "restaurant_reviews",
+  "version": "1.0.0",
+  "description": "An app for Udacity",
+  "main": "",
+  "scripts": {
+    "start": "python3 -m http.server 8003"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "devDependencies": {},
+  "dependencies": {
+    "idb": "^2.1.1"
+  }
+}

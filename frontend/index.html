@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0275d8" />
+  <link rel="icon" href="/img/icon_144.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/css/styles.css">
+  <title>Restaurant Reviews</title>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <h1>
+        <a href="/">Restaurant Reviews</a>
+      </h1>
+    </nav>
+  </header>
+
+  <main id="maincontent">
+    <section id="map-container">
+      <div id="map" aria-hidden="true" aria-describedby="map-help"></div>
+      <div hidden id="map-help">A map that shows all filtered restaurants</div>
+    </section>
+    <section>
+      <div class="filter-options">
+
+        <select aria-label="Select Neighborhood" id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()">
+          <option value="all">All Neighborhoods</option>
+        </select>
+        <select id="cuisines-select" aria-label="Select Cuisine" name="cuisines" onchange="updateRestaurants()">
+          <option value="all">All Cuisines</option>
+        </select>
+      </div>
+    </section>
+    <section>
+      <div class="wrapper">
+        <h2>Filter Results</h2>
+        <ul id="restaurants-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').then(function (registration) {
+          console.log('ServiceWorker registration successful with scope: ', registration.scope);
+        }, function (err) {
+          console.log('ServiceWorker registration failed: ', err);
+        });
+      });
+    }
+  </script>
+  <script type="application/javascript" charset="utf-8" src="node_modules/idb/lib/idb.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7_2mjv6BUTJSpU_tW4RTRbbLKAmpUZwE&libraries=places&callback=initMap&onError=onLoadMapError"></script>
+
+
+  <footer id="footer">
+    Copyright (c) 2017
+    <a href="/">
+      <strong>Restaurant Reviews</strong>
+    </a> All Rights Reserved.
+  </footer>
+
+</body>
+
+</html>
